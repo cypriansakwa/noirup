@@ -5,7 +5,19 @@ NARGO_HOME=${NARGO_HOME-"$HOME/.nargo"}
 NARGO_BIN_DIR="$NARGO_HOME/bin"
 
 BINARIES=("nargo" "noir-profiler" "noir-inspector")
-
+if [[ "$1" == "version" ]]; then
+  if [[ -f "$(dirname "$0")/version.txt" ]]; then
+    echo -n "noirup "
+    cat "$(dirname "$0")/version.txt"
+  else
+    # fallback for devs working in git repo
+    TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "unknown")
+    HASH=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
+    DATE=$(date +%Y-%m-%d)
+    echo "noirup $TAG ($HASH $DATE)"
+  fi
+  exit 0
+fi
 main() {
   need_cmd git
   need_cmd curl
@@ -210,6 +222,7 @@ main() {
 
   say "done"
 }
+
 
 usage() {
   cat 1>&2 <<EOF
