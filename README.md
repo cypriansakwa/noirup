@@ -10,6 +10,16 @@ curl -L https://raw.githubusercontent.com/noir-lang/noirup/main/install | bash
 
 ## Usage
 
+To check which version of noirup you have installed:
+
+```sh
+noirup version
+```
+Example output:
+```sh
+noirup 0.1.4 (7dbe69c 2025-02-20)
+```
+
 To install the **nightly** version:
 
 ```sh
