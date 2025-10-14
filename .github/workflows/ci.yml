@@ -2,11 +2,13 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches:
+      - "*"
   pull_request:
-    branches: [main]
+    branches:
+      - "*"
   schedule:
-    - cron: "40 2 * * *" # Run 40 mins after nightly noir release (which happens at 2 AM UTC)
+    - cron: "40 2 * * *"
 
 permissions:
   contents: read
