@@ -75,6 +75,8 @@ jobs:
         env:
           INSTALL_URL: https://raw.githubusercontent.com/${{ env.REPO }}/${{ env.REF }}/install
           NOIRUP_BIN_URL: https://raw.githubusercontent.com/${{ env.REPO }}/${{ env.REF }}/noirup
+      - name: Check noirup version
+        run: noirup version
       - name: Install nargo with noirup
         run: noirup ${{steps.parse.outputs.toolchain}}
       - name: Check nargo installation

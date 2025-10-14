@@ -35,6 +35,9 @@ jobs:
         with:
           ref: ${{ needs.release-please.outputs.tag-name }}
 
+      - name: Update version.txt
+        run: echo "${{ needs.release-please.outputs.tag-name }}" > version.txt
+
       - name: Upload files to release
         uses: svenstaro/upload-release-action@v2
         with:
